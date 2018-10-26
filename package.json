@@ -1,7 +1,7 @@
 {
   "name": "rivet-clearable-input",
   "version": "0.1.0-alpha",
-  "description": "An accessible switch component for Rivet",
+  "description": "An enhancement for Rivet's input component.  It allows for a text input to be cleared by having a clickable 'x' show up in the input control.",
   "repository": {
     "type": "git",
     "url": "https://github.com/maurercw/rivet-clearable-input"
