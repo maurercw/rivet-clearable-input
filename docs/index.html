@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Rivet Clearable Input</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.1.0/rivet.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="./css/rivet-clearable-input.css"/>
+  <style>
+    /* Demo styles */
+    body {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    code {
+      background-color: #f7f7f7;
+      display: inline-block;
+      padding: .05rem .15rem;
+      border-radius: 3px;
+      color: #d14;
+    }
+
+    .rvt-plain-list li {
+      margin: 0;
+    }
+
+    .rvt-clearable-input-demo {
+      padding: 1.5rem .5rem;
+      border-top: 1px solid #eee;
+    }
+
+    .rvt-clearable-input-demo .rvt-clearable-input {
+      margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+<main class="rvt-container rvt-container--sophomore rvt-container--center" id="wrapper">
+  <h1 class="rvt-ts-36 rvt-lh-title rvt-text-bold">Rivet Clearable Input</h1>
+  <p class="rvt-ts-23 rvt-m-bottom-sm rvt-m-top-xxs rvt-lh-title">An clearable input component for Rivet</p>
+
+  <div class="rvt-repo-info">
+    <a href="./">Clearable Input source on Github</a>
+  </div>
+
+  <h2 class="rvt ts-20 rvt-text-bold rvt-m-top-xxl">Clearable Input</h2>
+  <ul class="rvt-plain-list rvt-m-top-md">
+    <li>
+      <div class="rvt-p-left-sm">
+        <label for="search" class="rvt-sr-only">Search</label>
+        <div class="rvt-input-group clear-field">
+          <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search"
+                 placeholder="Enter name or username"/>
+          <div class="rvt-input-group__append">
+            <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="rvt-p-left-sm">
+        <label for="search2" class="rvt-sr-only">Search</label>
+        <div class="rvt-input-group clear-field">
+          <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search2"
+                 placeholder="Enter name or username"/>
+          <div class="rvt-input-group__append">
+            <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+</main>
+<script src="./js/rivet-clearable-input.js"></script>
+<script>
+     ClearableInput.init();
+
+    // Listen for a custom "inputCleared" event
+    document.addEventListener('inputCleared', event => {
+      console.debug(`Custom reset event triggered from: ${event.detail.name()}`);
+    }, false);
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+/*! rivet-uits - @version v1.1.0 */
+.rvt-clearable-input {
+  background2: #fff url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
+  background: #fff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAhpJREFUSIntlEFLVFEUx3/nvtKooGkeRFApOHNnISHUXmrjQl1ru2rhR8g2YhDYIuxjVG4ywspFBFlRu76A791xHdVronBRzjktnJFp5s2oELXxv/xzzu9/7rn3PTjQ/1a0j1oZGho6VSgUjtdqtc09N+1WUC6XL5jZrHNuAjgBoKrfRWTVzBZDCB969fc8gfd+TkSWRGQEOLIzlUi/iJwXkZk4jqMsy9b2HeC9nwMWzOyVmZ0RkT9qVfUn8EZErsdxLN1CXJ5ZqVRGgNvAWpqmY8BUA9gKn0rTdExVXwLzpVLp4p4DzOxG43Sj3vvpEMJKM6QJDyGseO/HnXOjgBOR2TzWoTxTVSecczRC7nvvJUmSpVKpNAXQgE8Cy0A/gIiMs/1orJXV8YoGBwcLfX19X9vsupldTdP0IUA7vKmtra3TGxsbH1u9jhVFUWTtnqrWzezHzlQih1W1o1dEOno7iqrV6jdV/dwCb935ZKVSubK+vv4kiqJpVf3V0lqrVqufdg1oTPI8Dw4sm9mDZgjbF98MWaVt/10DVPUeUHfOvQ4hPGvbedQMCSE8dc6tAQos5g6bZwKUy+WbInIXeAFcou1CgTrwFrgMzCdJspDH6folZ1n2Lo7jTVWdEZG+nBIHnANuJUlypxun578oy7L3xWLxMXDMzM6KyFEAVf0iIssici1Jkke9GPvSwMDAyeHh4eJfAx7on+g3wAnu6tPkWcQAAAAASUVORK5CYII=") no-repeat right -20px center;
+  border: 1px solid #999;
+  padding: 3px 28px 3px 4px;
+  /* Use the same right padding (18) in jQ! */
+  border-radius: 3px;
+  transition: background 0.4s;
+}
+
+.rvt-clearable-input.x {
+  background-position: right 5px center;
+}
+
+.rvt-clearable-input.onX {
+  cursor: pointer;
+}
+
+.rvt-clearable-input::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
