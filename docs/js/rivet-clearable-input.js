@@ -81,7 +81,8 @@
       */
     var init = function () {
       var objArray = document.querySelectorAll("input.rvt-clearable-input");
-      objArray.forEach(function (obj) {
+      for (var i = 0; i < objArray.length; i++) {
+        var obj = objArray[i];
         //Create handler event for when text is added to the input
         obj.addEventListener('input', function (e) {
           _toggleClass(e.target.value, e.target, 'x');
@@ -89,7 +90,7 @@
 
         //Create handler event for when ESC key is pressed to clear the field
         obj.addEventListener('keyup', function (e) {
-          if (e.key == 'Escape') {
+          if (e.keyCode == 27) {
             clearInput(e.target);
           }
         });
@@ -109,7 +110,7 @@
             clearInput(ev.target);
           }
         });
-      });
+      }
     };
 
     /**
