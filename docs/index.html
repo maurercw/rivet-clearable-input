@@ -79,9 +79,9 @@
      ClearableInput.init();
 
     // Listen for a custom "inputCleared" event
-    document.addEventListener('inputCleared', event => {
-      console.debug(`Custom reset event triggered from: ${event.detail.name()}`);
-    }, false);
+    document.addEventListener('inputCleared', function(event) {
+        console.debug(`Custom reset event triggered from: ${event.detail.name()}`);
+    });
   </script>
 </body>
 </html>
