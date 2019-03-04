@@ -117,7 +117,8 @@
      * Return public APIs
      */
     return {
-      init: init
+      init: init,
+      clearInput: clearInput
     };
   });
 

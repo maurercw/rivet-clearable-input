@@ -1,6 +1,6 @@
 /*!
  * rivet-clearable-input - @version 0.1.0-alpha
- * (c) 2018, The Trustees of Indiana University | Apache-2.0 License
+ * (c) 2019, The Trustees of Indiana University | Apache-2.0 License
  * https://github.com/maurercw/rivet-clearable-input
  */
 
@@ -123,7 +123,8 @@
      * Return public APIs
      */
     return {
-      init: init
+      init: init,
+      clearInput: clearInput
     };
   });
 

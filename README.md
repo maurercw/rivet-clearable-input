@@ -32,6 +32,7 @@ The Rivet clearable input's `.init()` method must be called somewhere in your do
 | Method| Description|
 |--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClearableInput.init()` | Initializes the clearable input component |
+| `ClearableInput.clearInput()` | Fires the event to clear the input |
 
 ### Custom events
 The clearable input component emits a custom event when the "x" is clicked. You can listen for this event in your own scripts and respond to them as needed.
