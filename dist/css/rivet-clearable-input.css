@@ -30,6 +30,12 @@
   border-left: none;
 }
 
+.buttonX:focus {
+  outline: none initial none initial;
+  -webkit-box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
+          box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
+}
+
 .buttonX > * {
   pointer-events: none;
 }

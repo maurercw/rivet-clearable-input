@@ -12,6 +12,10 @@
   background-color: white;
   border: 1px solid #666;
   border-left: none;
+  &:focus {
+    outline: none initial none initial;
+    box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
+  }
   > * { pointer-events: none; }
 
   svg { vertical-align: middle; }
