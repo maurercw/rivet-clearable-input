@@ -12,6 +12,15 @@
 
   'use strict';
 
+  var CLEARABLE_ATTR = 'data-clearable';
+
+  var CLOSE_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">' +
+                        '<g fill="currentColor">' +
+                            '<path d="M8,0a8,8,0,1,0,8,8A8,8,0,0,0,8,0ZM8,14a6,6,0,1,1,6-6A6,6,0,0,1,8,14Z"/>' +
+                            '<path d="M10.83,5.17a1,1,0,0,0-1.41,0L8,6.59,6.59,5.17A1,1,0,0,0,5.17,6.59L6.59,8,5.17,9.41a1,1,0,1,0,1.41,1.41L8,9.41l1.41,1.41a1,1,0,0,0,1.41-1.41L9.41,8l1.41-1.41A1,1,0,0,0,10.83,5.17Z"/>' +
+                        '</g>' +
+                    '</svg>';
+
   /**
      * Creates a new custom event and stores a reference
      * to the element's ID in the custom
@@ -32,80 +41,80 @@
     }
 
     /**
-      * Check the provided element for the presence of the provided css class name
+      * Remove css classes from the element, clear the text, hide the button, fire the event
       */
-    var _hasClass = function(element, classNameToFind) {
-        var classes = element.className.split(" ");
-        var i = classes.indexOf(classNameToFind);
-        return (i >= 0);
+    var clearInput = function(element) {
+        element.classList.remove("hasData");
+        element.value = '';
+
+        //Hide the button
+        var clearButton = createOrFindButton(element);
+        clearButton.style.display = "none";
+
+        _fireCustomEvent(element, 'inputCleared');
     }
 
     /**
-      * Adds the classToToggle if not already present on the element if dataToCheck evaluates to true.
-      * Removes the classToToggle if present on the element if dataToCheck evaluates to false.
-      */
-    var _toggleClass = function(dataToCheck, element, classToToggle) {
-        var classes = element.className.split(" ");
-        var i = classes.indexOf(classToToggle);
-        if (dataToCheck) {
-            //Add
-            if (i == -1) {
-                element.className += " " + classToToggle;
-            }
-        } else {
-            //Remove
-            if (i >= 0) {
-                classes.splice(i, 1);
-                element.className = classes.join(" ");
+     * Event handler for the "close" button
+     */
+    var _handleClick = function(event) {
+        var clearButton = event.target;
+        if (clearButton.classList.contains("buttonX")) {
+            var inputId = clearButton.getAttribute(CLEARABLE_ATTR);
+            clearInput(document.getElementById(inputId));
+        }
+
+    }
+
+    /**
+     * Event handler for input being entered into the text box
+     */
+    var _handleInput = function(event) {
+        var clearableInput = event.target;
+        if (clearableInput.classList.contains("rvt-clearable-input")) {
+            var clearButton = createOrFindButton(clearableInput);
+            //If we have content, show the button, otherwise, hide it
+            if (clearableInput.value.length > 0) {
+                clearableInput.classList.add("hasData");
+                clearButton.style.display = "block";
+            } else {
+                clearableInput.classList.remove("hasData");
+                clearButton.style.display = "none";
             }
         }
     }
 
     /**
-      * Remove css classes from the element, clear the text, fire the event
-      */
-    var clearInput = function(element) {
-         _toggleClass(false, element, 'x');
-          _toggleClass(false, element, 'onX');
-          element.value = '';
-          _fireCustomEvent(element, 'inputCleared');
+     * Create a new button, or return the element if it already exists
+     */
+    var createOrFindButton = function(inputElement) {
+        var newButtonId = "button_" + inputElement.id;
+        //Make sure it doesn't exist already
+        var button = document.getElementById(newButtonId);
+
+        if (!button) {
+            button = document.createElement("button");
+            button.type = "button";
+            button.setAttribute(CLEARABLE_ATTR, inputElement.id);
+            button.classList.add("buttonX");
+            button.innerHTML = CLOSE_ICON;
+            button.id = newButtonId;
+            inputElement.parentNode.insertBefore(button, inputElement.nextSibling);
+        }
+        return button;
     }
 
     /**
       * Adds all the event listeners to the input element(s)
       */
-    var init = function() {
-      var objArray = document.querySelectorAll("input.rvt-clearable-input");
-      for (var i=0; i<objArray.length; i++) {
-        var obj = objArray[i];
-          //Create handler event for when text is added to the input
-          obj.addEventListener('input', function(e) {
-               _toggleClass(e.target.value, e.target, 'x');
-          });
+    var init = function(context) {
+        // Optional element to bind the event listeners to
+        if (context === undefined) {
+            context = document;
+        }
 
-          //Create handler event for when ESC key is pressed to clear the field
-          obj.addEventListener('keyup', function(e) {
-               if (e.keyCode == 27) {
-                   clearInput(e.target);
-               }
-          });
-
-          //Create handler event for moving the mouse over the X so that it can be clicked
-          obj.addEventListener('mousemove', function(e) {
-                if (_hasClass(e.target, 'x')) {
-                   var data = e.target.offsetWidth-28 < e.clientX-e.target.getBoundingClientRect().left;
-                   _toggleClass(data, e.target, 'onX');
-                }
-          });
-
-          //Create handler event for when the X is clicked to clear the field
-          obj.addEventListener('click', function(ev) {
-              if (_hasClass(ev.target, 'onX')) {
-                  ev.preventDefault();
-                 clearInput(ev.target);
-              }
-          });
-      }
+        context.addEventListener('click', _handleClick, false);
+        context.addEventListener('input', _handleInput, false);
   }
 
   /**

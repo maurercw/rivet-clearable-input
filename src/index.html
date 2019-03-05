@@ -24,6 +24,7 @@
 
     .rvt-plain-list li {
       margin: 0;
+      padding-bottom: 5px;
     }
 
     .rvt-clearable-input-demo {
@@ -64,6 +65,22 @@
         <label for="search2" class="rvt-sr-only">Search</label>
         <div class="rvt-input-group clear-field">
           <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search2"
+                 placeholder="Enter name or username"/>
+          <div class="rvt-input-group__append">
+            <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 class="rvt ts-20 rvt-text-bold rvt-m-top-xxl">Regular, non-clearable Input</h2>
+  <ul class="rvt-plain-list rvt-m-top-md">
+    <li>
+      <div class="rvt-p-left-sm">
+        <label for="search" class="rvt-sr-only">Search</label>
+        <div class="rvt-input-group clear-field">
+          <input class="rvt-input-group__input transparencyOverride" type="text" id="search3"
                  placeholder="Enter name or username"/>
           <div class="rvt-input-group__append">
             <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
