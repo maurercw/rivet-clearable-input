@@ -4,7 +4,6 @@
  * https://github.com/maurercw/rivet-clearable-input
  */
 
-/*! rivet-uits - @version v1.1.0 */
 .rvt-clearable-input {
   border: 1px solid #999;
   padding: 3px 28px 3px 4px;
@@ -24,10 +23,21 @@
   height: 0;
 }
 
+.rvt-clearable-input-group {
+  position: relative;
+  width: 100%;
+}
+
 .buttonX {
   background-color: white;
   border: 1px solid #666;
   border-left: none;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 50%;
+  height: 100%;
+  right: 0;
 }
 
 .buttonX:focus {

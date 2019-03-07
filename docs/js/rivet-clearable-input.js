@@ -45,6 +45,7 @@
       var clearInput = function (element) {
           element.classList.remove("hasData");
           element.value = '';
+          element.focus();
 
           //Hide the button
           var clearButton = createOrFindButton(element);

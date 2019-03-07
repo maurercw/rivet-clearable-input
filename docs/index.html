@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Rivet Clearable Input</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.1.0/rivet.min.css">
+    <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.3.0/rivet.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/rivet-clearable-input.css"/>
     <style>
     /* Demo styles */
@@ -35,6 +35,11 @@
     .rvt-clearable-input-demo .rvt-clearable-input {
       margin-left: auto;
     }
+
+    .small-search-input {
+      min-width: 217px;
+      max-width: 217px;
+    }
   </style>
 </head>
 <body>
@@ -52,8 +57,10 @@
             <div class="rvt-p-left-sm">
                 <label for="search" class="rvt-sr-only">Search</label>
                 <div class="rvt-input-group clear-field">
-                    <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search"
-                           placeholder="Enter name or username"/>
+                    <div class="rvt-clearable-input-group">
+                        <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search"
+                               placeholder="Enter name or username"/>
+                    </div>
                     <div class="rvt-input-group__append">
                         <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
                     </div>
@@ -64,8 +71,24 @@
             <div class="rvt-p-left-sm">
                 <label for="search2" class="rvt-sr-only">Search</label>
                 <div class="rvt-input-group clear-field">
-                    <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search2"
-                           placeholder="Enter name or username"/>
+                    <div class="rvt-clearable-input-group">
+                        <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search2"
+                               placeholder="Enter name or username"/>
+                    </div>
+                    <div class="rvt-input-group__append">
+                        <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="rvt-p-left-sm">
+                <label for="search3" class="rvt-sr-only">Search</label>
+                <div class="rvt-input-group clear-field">
+                    <div class="rvt-clearable-input-group small-search-input">
+                        <input class="rvt-input-group__input transparencyOverride rvt-clearable-input small-search-input" type="text" id="search3"
+                               placeholder="Enter name or username"/>
+                    </div>
                     <div class="rvt-input-group__append">
                         <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
                     </div>
@@ -78,9 +101,9 @@
     <ul class="rvt-plain-list rvt-m-top-md">
         <li>
             <div class="rvt-p-left-sm">
-                <label for="search" class="rvt-sr-only">Search</label>
+                <label for="search4" class="rvt-sr-only">Search</label>
                 <div class="rvt-input-group clear-field">
-                    <input class="rvt-input-group__input transparencyOverride" type="text" id="search3"
+                    <input class="rvt-input-group__input transparencyOverride" type="text" id="search4"
                            placeholder="Enter name or username"/>
                     <div class="rvt-input-group__append">
                         <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
@@ -91,7 +114,7 @@
     </ul>
 
 </main>
-<script src="https://assets.uits.iu.edu/js/rivet/1.1.0/rivet.min.js"></script>
+<script src="https://assets.uits.iu.edu/js/rivet/1.3.0/rivet.min.js"></script>
 <script src="./js/rivet-clearable-input.js"></script>
 <script>
      ClearableInput.init();

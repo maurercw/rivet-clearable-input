@@ -8,10 +8,20 @@
   &::-ms-clear {display: none; width:0; height:0;}
 }
 
+.rvt-clearable-input-group {
+  position: relative;
+  width: 100%;
+}
+
 .buttonX {
   background-color: white;
   border: 1px solid #666;
   border-left: none;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  height: 100%;
+  right: 0;
   &:focus {
     outline: none initial none initial;
     box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;

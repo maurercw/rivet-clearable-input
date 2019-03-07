@@ -4,4 +4,4 @@
  * https://github.com/maurercw/rivet-clearable-input
  */
 
-/*! rivet-uits - @version v1.1.0 */.rvt-clearable-input{border:1px solid #999;padding:3px 28px 3px 4px;border-radius:3px;transition:background .4s}.rvt-clearable-input.hasData{border-right:none}.rvt-clearable-input::-ms-clear{display:none;width:0;height:0}.buttonX{background-color:#fff;border:1px solid #666;border-left:none}.buttonX:focus{outline:none initial;box-shadow:0 0 0 .125rem #fff,0 0 0 .25rem #006298}.buttonX>*{pointer-events:none}.buttonX svg{vertical-align:middle}
+.rvt-clearable-input{border:1px solid #999;padding:3px 28px 3px 4px;border-radius:3px;transition:background .4s}.rvt-clearable-input.hasData{border-right:none}.rvt-clearable-input::-ms-clear{display:none;width:0;height:0}.rvt-clearable-input-group{position:relative;width:100%}.buttonX{background-color:#fff;border:1px solid #666;border-left:none;position:absolute;transform:translateY(-50%);top:50%;height:100%;right:0}.buttonX:focus{outline:none initial;box-shadow:0 0 0 .125rem #fff,0 0 0 .25rem #006298}.buttonX>*{pointer-events:none}.buttonX svg{vertical-align:middle}
