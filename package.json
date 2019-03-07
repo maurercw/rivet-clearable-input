@@ -1,6 +1,6 @@
 {
   "name": "rivet-clearable-input",
-  "version": "0.1.0-alpha",
+  "version": "0.2.0-alpha",
   "description": "An enhancement for Rivet's input component.  It allows for a text input to be cleared by having a clickable 'x' show up in the input control.",
   "repository": {
     "type": "git",
