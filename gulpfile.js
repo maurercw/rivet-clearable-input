@@ -102,7 +102,7 @@ gulp.task('js', () => {
          * to have. For example "Widget". Then it's public methods should
          * be available as Widget.init().
          */
-        name: 'MyComponent',
+        name: 'ClearableInput',
         sourcemap: true
       });
     })
