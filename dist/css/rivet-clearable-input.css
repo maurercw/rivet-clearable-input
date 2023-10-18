@@ -1,22 +1,19 @@
 /*!
- * rivet-clearable-input - @version 0.2.0-alpha
- * (c) 2019, The Trustees of Indiana University | Apache-2.0 License
+ * rivet-clearable-input - @version 0.3.0-alpha
+ * (c) 2023, The Trustees of Indiana University | Apache-2.0 License
  * https://github.com/maurercw/rivet-clearable-input
  */
 
 .rvt-clearable-input {
   border: 1px solid #999;
-  padding: 3px 28px 3px 4px;
-  /* Use the same right padding (18) in jQ! */
+  padding: 3px 28px 3px 4px; /* Use the same right padding (18) in jQ! */
   border-radius: 3px;
   -webkit-transition: background 0.4s;
   transition: background 0.4s;
 }
-
 .rvt-clearable-input.hasData {
   border-right: none;
 }
-
 .rvt-clearable-input::-ms-clear {
   display: none;
   width: 0;
@@ -39,17 +36,14 @@
   height: 100%;
   right: 0;
 }
-
 .buttonX:focus {
   outline: none initial none initial;
   -webkit-box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
           box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
 }
-
 .buttonX > * {
   pointer-events: none;
 }
-
 .buttonX svg {
   vertical-align: middle;
 }

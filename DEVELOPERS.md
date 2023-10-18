@@ -1,10 +1,10 @@
-#Handy Developer Notes
+# Handy Developer Notes
 
-###Install Dependencies
+### Install Dependencies
 ```npm install```
 
-###Startup the local "server"
+### Startup the local "server"
 ```npm start```
 
-###Build stuff, including the docs and dist artifacts
+### Build stuff, including the docs and dist artifacts
 ```npm run build``` 

@@ -1,13 +1,13 @@
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const cp = require('child_process');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const rollup = require('rollup');
-const babel = require('rollup-plugin-babel');
-const externalHelpers = require('babel-plugin-external-helpers');
+const babel = require('@rollup/plugin-babel');
+const externalHelpers = require('@babel/plugin-external-helpers');
 const browserSync = require('browser-sync').create();
 const header = require('gulp-header');
-const runSequence = require('run-sequence');
+const runSequence = require('gulp4-run-sequence');
 const uglify = require('gulp-uglify');
 const pump = require('pump');
 const rename = require('gulp-rename');
@@ -118,11 +118,13 @@ gulp.task('js:copy', function() {
 });
 
 gulp.task('js:header', function() {
-  gulp.src('./dist/js/' + package.name + '.js')
+  return gulp.src('./dist/js/' + package.name + '.js')
     .pipe(header(banner, { package: package }))
     .pipe(gulp.dest('./dist/js/'));
+});
 
-  gulp.src('./dist/js/' + package.name + '.min.js')
+gulp.task('js:header-min', function() {
+  return gulp.src('./dist/js/' + package.name + '.min.js')
     .pipe(header(banner, { package: package }))
     .pipe(gulp.dest('./dist/js/'));
 });
@@ -146,6 +148,7 @@ gulp.task('js:release', function(done) {
     'js:copy',
     'js:minify',
     'js:header',
+    'js:header-min',
     done
   );
 });
@@ -166,16 +169,18 @@ gulp.task('css:minify', function () {
 
 gulp.task('css:prefix', function () {
   return gulp.src('dist/css/' + package.name + '.css')
-    .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
+    .pipe(postcss([autoprefixer()]))
     .pipe(gulp.dest('dist/css/'));
 });
 
 gulp.task('css:header', function () {
-  gulp.src('dist/css/' + package.name + '.css')
+  return gulp.src('dist/css/' + package.name + '.css')
     .pipe(header(banner, { package: package }))
     .pipe(gulp.dest('dist/css/'));
+});
 
-  gulp.src('dist/css/' + package.name + '.min.css')
+gulp.task('css:header-min', function () {
+  return gulp.src('dist/css/' + package.name + '.min.css')
     .pipe(header(banner, { package: package }))
     .pipe(gulp.dest('dist/css/'));
 });
@@ -188,15 +193,18 @@ gulp.task('css:release', function(done) {
     'css:prefix',
     'css:minify',
     'css:header',
+    'css:header-min',
     done
   );
 });
 
 // Builds the "dist" folder with compiled and minified CSS & JS
-gulp.task('release', ['js:release', 'css:release']);
+gulp.task('release', gulp.series('js:release', 'css:release'), function(done) {
+    done
+});
 
 // Groups up the watch tasks
-gulp.task('watch', ['eleventy:watch', 'sass:watch', 'js:watch']);
+gulp.task('watch', gulp.series('eleventy:watch', 'sass:watch', 'js:watch'));
 
 // Default development task
-gulp.task('default', ['serve', 'watch']);
+gulp.task('default', gulp.series('serve', 'watch'));
