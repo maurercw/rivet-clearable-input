@@ -1,6 +1,6 @@
 /*!
- * rivet-clearable-input - @version 0.3.0-alpha
- * (c) 2023, The Trustees of Indiana University | Apache-2.0 License
+ * rivet-clearable-input - @version 0.3.0
+ * (c) 2023, The Trustees of Indiana University | BSD-3-Clause License
  * https://github.com/maurercw/rivet-clearable-input
  */
 
