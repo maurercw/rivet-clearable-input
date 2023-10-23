@@ -13,9 +13,6 @@
   },
   "author": "Chris Maurer",
   "license": "Apache-2.0",
-  "dependencies": {
-    "rivet-uits": "^1.8.3"
-  },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "@babel/core": "^7.23.2",
@@ -34,6 +31,7 @@
     "gulp-util": "^3.0.8",
     "gulp4-run-sequence": "^1.0.2",
     "pump": "^3.0.0",
+    "rivet-core": "^2.5.2",
     "rollup": "^4.1.4",
     "@rollup/plugin-babel": "^6.0.4",
     "sass": "^1.69.3"

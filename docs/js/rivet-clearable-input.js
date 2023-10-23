@@ -1,32 +1,21 @@
-(function (factory) {
-  typeof define === 'function' && define.amd ? define(factory) :
-  factory();
-})((function () { 'use strict';
-
-  (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-      define([], function () {
-        return factory(root);
-      });
-    } else if (typeof exports === 'object') {
-      module.exports = factory(root);
-    } else {
-      root.ClearableInput = factory(root);
-    }
-  })(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : undefined, function (window) {
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ClearableInput = {}));
+})(this, (function (exports) { 'use strict';
 
     var CLEARABLE_ATTR = 'data-clearable';
     var CLOSE_ICON = '<span class="rvt-sr-only">Clear input</span>' + '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">' + '<g fill="currentColor">' + '<path d="M8,0a8,8,0,1,0,8,8A8,8,0,0,0,8,0ZM8,14a6,6,0,1,1,6-6A6,6,0,0,1,8,14Z"/>' + '<path d="M10.83,5.17a1,1,0,0,0-1.41,0L8,6.59,6.59,5.17A1,1,0,0,0,5.17,6.59L6.59,8,5.17,9.41a1,1,0,1,0,1.41,1.41L8,9.41l1.41,1.41a1,1,0,0,0,1.41-1.41L9.41,8l1.41-1.41A1,1,0,0,0,10.83,5.17Z"/>' + '</g>' + '</svg>';
 
     /**
-       * Creates a new custom event and stores a reference
-       * to the element's ID in the custom
-       * event's options "detail" property.
-       *
-       * More here:
-       * https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Adding_custom_data_%E2%80%93_CustomEvent()
-       *
-       */
+     * Creates a new custom event and stores a reference
+     * to the element's ID in the custom
+     * event's options "detail" property.
+     *
+     * More here:
+     * https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events#Adding_custom_data_%E2%80%93_CustomEvent()
+     *
+     */
     var _fireCustomEvent = function (element, eventName) {
       var event = new CustomEvent(eventName, {
         bubbles: true,
@@ -42,16 +31,16 @@
     };
 
     /**
-      * Remove css classes from the element, clear the text, hide the button, fire the event
-      */
+     * Remove css classes from the element, clear the text, hide the button, fire the event
+     */
     var clearInput = function (element) {
-      element.classList.remove("hasData");
+      element.classList.remove("has-data");
       element.value = '';
       element.focus();
 
       //Hide the button
       var clearButton = createOrFindButton(element);
-      clearButton.style.display = "none";
+      clearButton.setAttribute('hidden', '');
       _fireCustomEvent(element, 'inputCleared');
     };
 
@@ -75,11 +64,11 @@
         var clearButton = createOrFindButton(clearableInput);
         //If we have content, show the button, otherwise, hide it
         if (clearableInput.value.length > 0) {
-          clearableInput.classList.add("hasData");
-          clearButton.style.display = "block";
+          clearableInput.classList.add("has-data");
+          clearButton.removeAttribute('hidden');
         } else {
-          clearableInput.classList.remove("hasData");
-          clearButton.style.display = "none";
+          clearableInput.classList.remove("has-data");
+          clearButton.setAttribute('hidden', '');
         }
       }
     };
@@ -89,6 +78,7 @@
      */
     var createOrFindButton = function (inputElement) {
       var newButtonId = "button_" + inputElement.id;
+
       //Make sure it doesn't exist already
       var button = document.getElementById(newButtonId);
       if (!button) {
@@ -102,10 +92,17 @@
       }
       return button;
     };
+    var destroy = function (context) {
+      if (context === undefined) {
+        context = document;
+      }
+      context.removeEventListener('click', _handleClick, false);
+      context.removeEventListener('input', _handleInput, false);
+    };
 
     /**
-      * Adds all the event listeners to the input element(s)
-      */
+     * Adds all the event listeners to the input element(s)
+     */
     var init = function (context) {
       // Optional element to bind the event listeners to
       if (context === undefined) {
@@ -115,14 +112,9 @@
       context.addEventListener('input', _handleInput, false);
     };
 
-    /**
-     * Return public APIs
-     */
-    return {
-      init: init,
-      clearInput: clearInput
-    };
-  });
+    exports.clearInput = clearInput;
+    exports.destroy = destroy;
+    exports.init = init;
 
 }));
 //# sourceMappingURL=rivet-clearable-input.js.map

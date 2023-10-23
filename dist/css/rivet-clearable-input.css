@@ -4,14 +4,18 @@
  * https://github.com/maurercw/rivet-clearable-input
  */
 
+/**
+ * Do not edit directly
+ * Generated on Thu, 31 Aug 2023 14:13:24 GMT
+ */
 .rvt-clearable-input {
-  border: 1px solid #999;
+  border: 1px solid #75838f;
   padding: 3px 28px 3px 4px; /* Use the same right padding (18) in jQ! */
   border-radius: 3px;
   -webkit-transition: background 0.4s;
   transition: background 0.4s;
 }
-.rvt-clearable-input.hasData {
+.rvt-clearable-input.has-data {
   border-right: none;
 }
 .rvt-clearable-input::-ms-clear {
@@ -26,8 +30,8 @@
 }
 
 .buttonX {
-  background-color: white;
-  border: 1px solid #666;
+  background-color: #ffffff;
+  border: 1px solid #75838f;
   border-left: none;
   position: absolute;
   -webkit-transform: translateY(-50%);
@@ -37,9 +41,9 @@
   right: 0;
 }
 .buttonX:focus {
-  outline: none initial none initial;
-  -webkit-box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
-          box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
+  outline: none;
+  -webkit-box-shadow: 0 0 0 0.125rem #328bb8;
+          box-shadow: 0 0 0 0.125rem #328bb8;
 }
 .buttonX > * {
   pointer-events: none;

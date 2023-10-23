@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Rivet Clearable Input</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.3.0/rivet.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/rivet-core@2.5.2/css/rivet.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/rivet-clearable-input.css"/>
     <style>
     /* Demo styles */
@@ -13,111 +13,72 @@
       padding-top: 6rem;
       padding-bottom: 6rem;
     }
-
-    code {
-      background-color: #f7f7f7;
-      display: inline-block;
-      padding: .05rem .15rem;
-      border-radius: 3px;
-      color: #d14;
-    }
-
-    .rvt-plain-list li {
-      margin: 0;
-      padding-bottom: 5px;
-    }
-
-    .rvt-clearable-input-demo {
-      padding: 1.5rem .5rem;
-      border-top: 1px solid #eee;
-    }
-
-    .rvt-clearable-input-demo .rvt-clearable-input {
-      margin-left: auto;
-    }
-
-    .small-search-input {
-      min-width: 217px;
-      max-width: 217px;
-    }
   </style>
 </head>
 <body>
-<main class="rvt-container rvt-container--sophomore rvt-container--center" id="wrapper">
-    <h1 class="rvt-ts-36 rvt-lh-title rvt-text-bold">Rivet Clearable Input</h1>
-    <p class="rvt-ts-23 rvt-m-bottom-sm rvt-m-top-xxs rvt-lh-title">An enhancement for Rivet's input component.  It allows for a text input to be cleared by having a clickable "x" show up in the input control.</p>
+<main class="rvt-container-md" id="wrapper">
+    <h1 class="rvt-ts-36 rvt-text-bold">Rivet Clearable Input</h1>
+    <p class="rvt-ts-23 rvt-m-bottom-sm rvt-m-top-xxs">An enhancement for Rivet's input component. It allows for a text input to be cleared by having a clickable "x" show up in the input control.</p>
 
-    <div class="rvt-repo-info">
-        <a href="./">Clearable Input source on Github</a>
+    <div>
+        <a href="https://github.com/maurercw/rivet-clearable-input">Clearable Input source on Github</a>
     </div>
 
-    <h2 class="rvt ts-20 rvt-text-bold rvt-m-top-xxl">Clearable Input</h2>
-    <ul class="rvt-plain-list rvt-m-top-md">
+    <h2 class="rvt-ts-20 rvt-text-bold rvt-m-top-lg">Clearable Input</h2>
+    <ul class="rvt-list-plain rvt-m-top-md">
         <li>
-            <div class="rvt-p-left-sm">
-                <label for="search" class="rvt-sr-only">Search</label>
-                <div class="rvt-input-group clear-field">
-                    <div class="rvt-clearable-input-group">
-                        <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search"
-                               placeholder="Enter name or username"/>
-                    </div>
-                    <div class="rvt-input-group__append">
-                        <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
-                    </div>
+            <label for="plain-input" class="rvt-label rvt-sr-only">Search</label>
+            <div class="rvt-input-group clear-field">
+                <input type="text" id="plain-input" class="rvt-text-input rvt-clearable-input"
+                       placeholder="Enter name or username"/>
+            </div>
+        </li>
+        <li class="rvt-m-top-sm">
+            <label for="search" class="rvt-label rvt-sr-only">Search</label>
+            <div class="rvt-input-group clear-field">
+                <div class="rvt-clearable-input-group">
+                    <input class="rvt-text-input rvt-input-group__input rvt-clearable-input" type="text" id="search"
+                           placeholder="Enter name or username"/>
+                </div>
+                <div class="rvt-input-group__append">
+                    <button type="button" class="rvt-button rvt-button--secondary">Search</button>
                 </div>
             </div>
         </li>
-        <li>
-            <div class="rvt-p-left-sm">
-                <label for="search2" class="rvt-sr-only">Search</label>
-                <div class="rvt-input-group clear-field">
-                    <div class="rvt-clearable-input-group">
-                        <input class="rvt-input-group__input transparencyOverride rvt-clearable-input" type="text" id="search2"
-                               placeholder="Enter name or username"/>
-                    </div>
-                    <div class="rvt-input-group__append">
-                        <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
-                    </div>
+        <li class="rvt-m-top-sm">
+            <label for="search2" class="rvt-label rvt-sr-only">Search</label>
+            <div class="rvt-input-group clear-field">
+                <div class="rvt-clearable-input-group rvt-width-md">
+                    <input class="rvt-text-input rvt-input-group__input rvt-clearable-input" type="text" id="search2"
+                           placeholder="Enter name or username"/>
                 </div>
-            </div>
-        </li>
-        <li>
-            <div class="rvt-p-left-sm">
-                <label for="search3" class="rvt-sr-only">Search</label>
-                <div class="rvt-input-group clear-field">
-                    <div class="rvt-clearable-input-group small-search-input">
-                        <input class="rvt-input-group__input transparencyOverride rvt-clearable-input small-search-input" type="text" id="search3"
-                               placeholder="Enter name or username"/>
-                    </div>
-                    <div class="rvt-input-group__append">
-                        <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
-                    </div>
+                <div class="rvt-input-group__append">
+                    <button type="button" class="rvt-button rvt-button--secondary">Search</button>
                 </div>
             </div>
         </li>
     </ul>
 
-    <h2 class="rvt ts-20 rvt-text-bold rvt-m-top-xxl">Regular, non-clearable Input</h2>
-    <ul class="rvt-plain-list rvt-m-top-md">
+    <h2 class="rvt-ts-20 rvt-text-bold rvt-m-top-xxl">Regular, non-clearable Input</h2>
+    <ul class="rvt-list-plain rvt-m-top-md">
         <li>
-            <div class="rvt-p-left-sm">
-                <label for="search4" class="rvt-sr-only">Search</label>
-                <div class="rvt-input-group clear-field">
-                    <input class="rvt-input-group__input transparencyOverride" type="text" id="search4"
-                           placeholder="Enter name or username"/>
-                    <div class="rvt-input-group__append">
-                        <button class="rvt-button rvt-button--secondary transparencyOverride">Search</button>
-                    </div>
+            <label for="search3" class="rvt-sr-only">Search</label>
+            <div class="rvt-input-group clear-field">
+                <input class="rvt-text-input rvt-input-group__input" type="text" id="search3"
+                       placeholder="Enter name or username"/>
+                <div class="rvt-input-group__append">
+                    <button type="button" class="rvt-button rvt-button--secondary">Search</button>
                 </div>
             </div>
         </li>
     </ul>
 
 </main>
-<script src="https://assets.uits.iu.edu/js/rivet/1.3.0/rivet.min.js"></script>
+<script src="https://unpkg.com/rivet-core@2.5.2/js/rivet.min.js"></script>
 <script src="./js/rivet-clearable-input.js"></script>
 <script>
-     ClearableInput.init();
+    Rivet.init();
+    ClearableInput.init();
 
     // Listen for a custom "inputCleared" event
     document.addEventListener('inputCleared', function(event) {

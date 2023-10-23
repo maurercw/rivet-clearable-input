@@ -38,8 +38,8 @@ gulp.task('serve', function () {
     }
   );
 
-  gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/sass/**/*.scss', gulp.series('sass'));
+  gulp.watch('src/js/**/*.js', gulp.series('js'));
 });
 
 /**
@@ -82,7 +82,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('sass:watch', function() {
-  gulp.watch('src/sass/**/*.scss', ['sass']);
+  gulp.watch('src/sass/**/*.scss', gulp.series('sass'));
 });
 
 /**
@@ -102,14 +102,14 @@ gulp.task('js', () => {
          * to have. For example "Widget". Then it's public methods should
          * be available as Widget.init().
          */
-        name: 'MyComponent',
+        name: 'ClearableInput',
         sourcemap: true
       });
     })
 });
 
 gulp.task('js:watch', function() {
-  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/js/**/*.js', gulp.series('js'));
 });
 
 gulp.task('js:copy', function() {

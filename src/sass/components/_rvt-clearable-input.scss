@@ -1,11 +1,18 @@
 .rvt-clearable-input {
-  border: 1px solid #999;
+  border: 1px solid $color-black-300;
   padding: 3px 28px 3px 4px; /* Use the same right padding (18) in jQ! */
   border-radius: 3px;
   transition: background 0.4s;
 
-  &.hasData { border-right: none; }
-  &::-ms-clear {display: none; width:0; height:0;}
+  &.has-data {
+    border-right: none;
+  }
+
+  &::-ms-clear {
+    display: none;
+    width:0;
+    height:0;
+  }
 }
 
 .rvt-clearable-input-group {
@@ -14,8 +21,8 @@
 }
 
 .buttonX {
-  background-color: white;
-  border: 1px solid #666;
+  background-color: $color-white-base;
+  border: 1px solid $color-black-300;
   border-left: none;
   position: absolute;
   transform: translateY(-50%);
@@ -23,10 +30,14 @@
   height: 100%;
   right: 0;
   &:focus {
-    outline: none initial none initial;
-    box-shadow: 0 0 0 0.125rem #fff, 0 0 0 0.25rem #006298;
+    outline: none;
+    box-shadow: 0 0 0 calc($spacing-xxs / 2) $color-blue-400;
   }
-  > * { pointer-events: none; }
+  > * {
+    pointer-events: none;
+  }
 
-  svg { vertical-align: middle; }
+  svg {
+    vertical-align: middle;
+  }
 }
