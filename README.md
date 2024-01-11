@@ -77,4 +77,9 @@ document.addEventListener('inputCleared', event => {
 1. Install the dependencies using NPM: `npm install`
 1. Start the development server by running `npm start` in your terminal. The demo will open in a new browser window at 
 `http://localhost:3000` and the server will watch for changes to all `.scss` and `.js` files.
-1. To update the dist files, make sure the version specified in package.json is correct.  Run `npm install`, then run `npm run build`.  Then push out the new code to master, and tag it as appropriate.
+
+## Releasing new versions
+1. Make sure the version specified in package.json is updated/correct.
+1. Run `npm install`
+1. Run `npm run build`.
+1. Once master is ready, tag it (supplying the appropriate version) `git tag -a v0.4.0 -m "tagging release"`
