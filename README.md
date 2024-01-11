@@ -81,5 +81,9 @@ document.addEventListener('inputCleared', event => {
 ## Releasing new versions
 1. Make sure the version specified in package.json is updated/correct.
 1. Run `npm install`
-1. Run `npm run build`.
-1. Once master is ready, tag it (supplying the appropriate version) `git tag -a v0.4.0 -m "tagging release"`
+1. Run `npm run build`
+1. Once master is ready, tag it (supplying the appropriate version):
+```
+git tag -a v0.4.0 -m "tagging release"
+git push --tags 
+```
