@@ -1,6 +1,6 @@
 /*!
- * rivet-clearable-input - @version 0.3.0
- * (c) 2023, The Trustees of Indiana University | BSD-3-Clause License
+ * rivet-clearable-input - @version 0.4.0
+ * (c) 2024, The Trustees of Indiana University | BSD-3-Clause License
  * https://github.com/maurercw/rivet-clearable-input
  */
 
@@ -47,6 +47,14 @@
       //Hide the button
       var clearButton = createOrFindButton(element);
       clearButton.setAttribute('hidden', '');
+
+      // Even if we clear the SR text, VoiceOver will not read it again the next time input is cleared.
+      // As a workaround, we are alternating adding a period at the end of the text so it looks like new text.
+      var srText = createOrFindSRMsg(element);
+      var currText = srText.textContent;
+      const input1 = "Input cleared";
+      const input2 = "Input cleared.";
+      srText.textContent = currText == input1 ? input2 : input1;
       _fireCustomEvent(element, 'inputCleared');
     };
 
@@ -68,6 +76,8 @@
       var clearableInput = event.target;
       if (clearableInput.classList.contains("rvt-clearable-input")) {
         var clearButton = createOrFindButton(clearableInput);
+        createOrFindSRMsg(clearableInput);
+
         //If we have content, show the button, otherwise, hide it
         if (clearableInput.value.length > 0) {
           clearableInput.classList.add("has-data");
@@ -97,6 +107,20 @@
         inputElement.parentNode.insertBefore(button, inputElement.nextSibling);
       }
       return button;
+    };
+    var createOrFindSRMsg = function (inputElement) {
+      var srOnlyMsgId = "sr-alert-" + inputElement.id;
+
+      //Make sure it doesn't exist already
+      var srOnlyMsg = document.getElementById(srOnlyMsgId);
+      if (!srOnlyMsg) {
+        srOnlyMsg = document.createElement("span");
+        srOnlyMsg.id = srOnlyMsgId;
+        srOnlyMsg.classList.add("rvt-sr-only");
+        srOnlyMsg.setAttribute("aria-live", "polite");
+        inputElement.parentNode.insertBefore(srOnlyMsg, inputElement.nextSibling);
+      }
+      return srOnlyMsg;
     };
     var destroy = function (context) {
       if (context === undefined) {
